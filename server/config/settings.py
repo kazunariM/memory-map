@@ -22,6 +22,9 @@ except ImportError:
     PROD_DATABASE_PASSWORD = ''
     PROD_DATABASE_HOST = ''
     PROD_DATABASE_PORT = ''
+    PROD_STATIC_ROOT = ''
+    PROD_MEDIA_ROOT = ''
+    PROD_DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +37,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = PROD_SECRET_KEY if PROD_SECRET_KEY else 'django-insecure-065#%fzr+p+t-(0l_98c7l$x3suel@66uc3s)0+ipaezz**&_%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = PROD_DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -135,8 +138,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = PROD_STATIC_ROOT if PROD_STATIC_ROOT else (BASE_DIR / 'static')
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = PROD_MEDIA_ROOT if PROD_MEDIA_ROOT else (BASE_DIR / 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTH_USER_MODEL = 'memorymap.User'
