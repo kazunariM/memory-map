@@ -13,6 +13,7 @@ class LocationSerializer(serializers.ModelSerializer): # Location情報を取得
     class Meta:
         model = Location
         fields = '__all__'
+        read_only_fields = ('uuid','event')
 
 # 以下、方針未決定のAPI
 class UserSerializer(serializers.ModelSerializer): # Userのuuidのみ取得

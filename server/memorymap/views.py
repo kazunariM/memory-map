@@ -10,14 +10,14 @@ class EventListAPIView(ListAPIView):#10件取得
     queryset = Event.objects.all().order_by('uuid')[:10]
     serializer_class = EventSerializer
 
-# イベントにロケーションを追加する
+# イベントにロケーション情報をPOSTする(URLに記載されたuuidはそのままEventフィールドに適応される)
 class LocationCreateAPIView(CreateAPIView):
     serializer_class = LocationSerializer
 
     def perform_create(self, serializer):
-        related_model_id = self.request.data.get('uuid')
-        related_model = Event.objects.get(id=related_model_id)
-        serializer.save(related_model=related_model)
+        event_uuid = self.kwargs.get('uuid')
+        event = Event.objects.get(uuid=event_uuid)
+        serializer.save(event=event)
 
 # 以下、方針未決定のAPI
 class UserListAPIView(ListAPIView): # uuidのみ取得
