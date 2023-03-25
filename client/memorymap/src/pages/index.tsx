@@ -6,6 +6,9 @@ const Map = dynamic(() => import('@/map/display'), { ssr: false })
 
 import styles from '@/styles/index.module.scss'
 
+import Header from '@/components/header'
+import Side from '@/components/side'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -14,21 +17,12 @@ export default function Home() {
       <Head>
         <title>思い出マップ</title>
       </Head>
-      <header>
-        <nav>
-          <h1>思い出マップ</h1>
-        </nav>
-      </header>
+
+      <Header />
+      
       <main className={styles.main}>
 
-        <div className={styles.side}>
-          <aside>
-            <ul>
-              <li>ホーム</li>
-              <li>投稿</li>
-            </ul>
-          </aside>
-        </div>
+        <Side />
 
         <div className={styles.contents}>
           <div className={styles.map_area}>

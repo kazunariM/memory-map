@@ -1,0 +1,42 @@
+.contents {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+}
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.container_column {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+}
+
+.container_detail {
+    display: flex;
+    height: 80%;
+    gap: 1em;
+}
+
+.spread {
+    flex-grow: 1;
+}
+
+.map {
+    height: 60%;
+}
+
+.locations {
+    display: flex;
+    gap: 0.5em;
+    flex-grow: 1;
+}

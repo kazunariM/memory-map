@@ -1,22 +1,39 @@
 .main {
     display: flex;
-    gap: 2%;
 }
 
 .side {
-    width: 10%;
     align-items: center;
     display: flex;
+    margin: 0 0.5em;
+    
+    aside {
+        
+        ul {
+            list-style-type: none;
+            padding-inline-start: 0px;
+
+            li {
+                text-align: center;
+                margin: 2em 0;
+            }
+        }
+    }
 }
 
 .contents {
-    width: 90%;
     display: flex;
-    gap: 2%;
+    flex-grow: 1;
 }
 
 .map_area {
     width: 70%;
+    display: flex;
+    flex-direction: column;
+
+    .leaflet-container {
+        flex-grow: 1;
+    }
 }
 
 .list_area {
