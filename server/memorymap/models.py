@@ -37,6 +37,7 @@ class Event(models.Model):
     lat = models.FloatField((""))#FloatFieldは2進数で小数を表す
     lon = models.FloatField((""))#FloatFieldは2進数で小数を表す
     member = models.ManyToManyField(User, blank = True,related_name = 'events')
+    
 
 class Location(models.Model):
     """Ruki
