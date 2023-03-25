@@ -42,9 +42,10 @@ class Location(models.Model):
     """Ruki
     """
     def img_path(self, filename): # Userと同じ
-        result = 'stampbg/{}{}'.format(str(uuid.uuid4().hex), os.path.splitext(filename)[-1])
+        result = 'location/{}{}'.format(str(uuid.uuid4().hex), os.path.splitext(filename)[-1])
         return result
 
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, db_index=True, primary_key=True)
     title = models.CharField( max_length = 127) # 場所の名称
     event = models.ForeignKey( Event, on_delete=models.CASCADE) # 外部キー(Eventと1対多)
     photo = models.ImageField( upload_to=img_path, null = True, blank = True)
