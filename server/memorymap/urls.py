@@ -1,12 +1,11 @@
 #URLパターン
 from django.urls import path
-from .views import EventListAPIView, UserListAPIView, LocationCreateAPIView
+from .views import EventListAPIView, LocationCreateAPIView, LoginView
 
 urlpatterns = [
-    path('events',EventListAPIView.as_view()), # 10件
-    path('location/<uuid:pk>',LocationCreateAPIView.as_view()), # イベントにロケーション情報をPOSTする
+    path('events', EventListAPIView.as_view()), # 10件
+    path('location/<uuid:pk>', LocationCreateAPIView.as_view()), # イベントにロケーション情報をPOSTする
+    path('auth/login/', LoginView.as_view()) # ログイン周り
 
-    # 以下、方針未決定のAPI
-    path('auth/login/',UserListAPIView.as_view()), # uuidのみ取得
 
 ]

@@ -15,8 +15,10 @@ class LocationSerializer(serializers.ModelSerializer): # Location情報を取得
         fields = '__all__'
         read_only_fields = ('uuid','event')
 
-# 以下、方針未決定のAPI
-class UserSerializer(serializers.ModelSerializer): # Userのuuidのみ取得
+class UserSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=255)
+    password = serializers.CharField(max_length=255, style={'input_type': 'password'})
+
     class Meta:
-        model = User
-        fields = ('uuid',)
+        fields = ('username','password')
+

@@ -1,8 +1,15 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login
 
+from rest_framework import authentication, exceptions
 from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
 from .models import Event, Location, User
 from .serializers import EventSerializer, UserSerializer, LocationSerializer
+
 #from rest_framework import generics
 
 class EventListAPIView(ListAPIView):#10件取得
@@ -19,9 +26,15 @@ class LocationCreateAPIView(CreateAPIView):
         event = Event.objects.get(uuid=event_uuid)
         serializer.save(event=event)
 
-# 以下、方針未決定のAPI
-class UserListAPIView(ListAPIView): # uuidのみ取得
-    queryset = User.objects.all()
+# ログイン周り
+class LoginView(APIView):
     serializer_class = UserSerializer
-    def get_queryset(self):
-        return User.objects.values('uuid',)
+
+    def post(self, request):
+        user = authenticate(request, username=request.data['username'], password=request.data['password'])
+        if user:
+            login(request, user)
+            return Response({})
+        else:
+            raise exceptions.AuthenticationFailed('アカウントが見つかりませんでした')
+        
