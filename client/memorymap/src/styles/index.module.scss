@@ -1,0 +1,24 @@
+.main {
+    display: flex;
+    gap: 2%;
+}
+
+.side {
+    width: 10%;
+    align-items: center;
+    display: flex;
+}
+
+.contents {
+    width: 90%;
+    display: flex;
+    gap: 2%;
+}
+
+.map_area {
+    width: 70%;
+}
+
+.list_area {
+    width: 30%;
+}
