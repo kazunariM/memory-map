@@ -9,8 +9,13 @@ class EventSerializer(serializers.ModelSerializer):#10件
         #fields = ('uuid','title','thumbnail')
         fields = ('uuid','title')
 
+class LocationSerializer(serializers.ModelSerializer): # Location情報を取得
+    class Meta:
+        model = Location
+        fields = '__all__'
+
 # 以下、方針未決定のAPI
-class UserSerializer(serializers.ModelSerializer): # uuidのみ取得
+class UserSerializer(serializers.ModelSerializer): # Userのuuidのみ取得
     class Meta:
         model = User
         fields = ('uuid',)
