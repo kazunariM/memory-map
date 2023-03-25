@@ -13,4 +13,3 @@ class User(AbstractUser):
     
     prof_image = models.ImageField(upload_to=img_path ,null=True, blank=True)
     
-    
