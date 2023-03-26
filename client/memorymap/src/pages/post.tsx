@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import Head from 'next/head'
 import Image from 'next/image'
 import { ChangeEvent, FC, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 const Map = dynamic(() => import('@/map/click'), { ssr: false })
 
@@ -17,6 +18,8 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 const Post: FC = () => {
+    const router = useRouter()
+
     const [image, setImage] = useState<string | ArrayBuffer | null>(null)
     const [exifLat, setexifLat] = useState<number | null>(null)
     const [exifLon, setexifLon] = useState<number | null>(null)
@@ -54,6 +57,7 @@ const Post: FC = () => {
     }
 
     const handleSubmit = async () => {
+        
         const res_csrf = await axios.get('http://127.0.0.1:8000/api/csrf/')
         Cookies.set('csrftoken', res_csrf.data.csrftoken);
         if (Title && image && Lat && Lon) {
@@ -71,7 +75,9 @@ const Post: FC = () => {
             };
 
             const response = await axios.post('http://localhost:8000/api/event/', data, {headers: headers})
-            
+
+            router.push('/')
+
         } else {
             window.alert('入力してください')
         }

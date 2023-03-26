@@ -29,11 +29,14 @@ export default function Home() {
   }, [])
 
   const changeLatLon = (uid: string) => {
-    const items = events?.filter(event => event.uuid === uid)
-    window.alert(uid)
-    if (items) {
-      setLat(items[0].lat)
-      setLon(items[0].lon)
+    if (events) {
+      const item = events.find(elm => {
+        return elm.uuid === uid
+      })
+      if (item) {
+        setLat(item.lat)
+        setLon(item.lon)
+      }
     }
   }
 
@@ -41,10 +44,11 @@ export default function Home() {
     const items = []
     let data: any
     if (events) for (data of events) {
-      window.alert(JSON.stringify(data))
+      const uuid = data.uuid
       items.push(
-        <div className={styles.event} onClick={() => changeLatLon(data.uuid)}>
+        <div className={styles.event} onClick={() => changeLatLon(uuid)}>
           <p><Link href={`/event/${data.uuid}/`}>{data.title}</Link></p>
+          <p>{data.hold_date}</p>
           {data.member && <p>{ data.member.map((user: any, index: Key)=><span key={index}>{user.username}</span>) }</p>}
         </div>
     )}

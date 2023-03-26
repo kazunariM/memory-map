@@ -19,10 +19,11 @@ class EventDSerializer(serializers.ModelSerializer):#投稿詳細
 
 
 class EventSerializer(serializers.ModelSerializer):#投稿10件
+    hold_date = serializers.DateTimeField(format="%m/%d %H:%M:%S", read_only=True)
     class Meta:
         model = Event
         
-        fields = ('uuid','title','thumbnail','lat','lon')
+        fields = ('uuid','title','thumbnail','lat','lon','hold_date')
 class EventCSerializer(serializers.ModelSerializer):#投稿空のイベント作成
     class Meta:
         model = Event
