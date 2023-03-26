@@ -10,7 +10,7 @@ urlpatterns = [
     path('events',EventListAPIView.as_view()),#10件
     path('event/<uuid:uuid>', EventLocationView.as_view(), name='event-location'),#詳細
     path('event',EventCreateView.as_view()),#空のイベント
-    path('location/<uuid:pk>', LocationCreateAPIView.as_view()), # イベントにロケーション情報をPOSTする
+    path('location/<uuid:uuid>', LocationCreateAPIView.as_view()), # イベントにロケーション情報をPOSTする
     path('auth/login/', LoginView.as_view()) # ログイン周り
 
 
