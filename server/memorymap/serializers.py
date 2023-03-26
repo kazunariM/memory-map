@@ -22,7 +22,7 @@ class EventSerializer(serializers.ModelSerializer):#投稿10件
     class Meta:
         model = Event
         
-        fields = ('uuid','title','thumbnail')
+        fields = ('uuid','title','thumbnail','lat','lon')
 class EventCSerializer(serializers.ModelSerializer):#投稿空のイベント作成
     class Meta:
         model = Event

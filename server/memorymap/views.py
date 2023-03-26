@@ -15,6 +15,7 @@ from .serializers import EventSerializer, UserSerializer, LocationSerializer#ruk
 from django.contrib.auth import authenticate, login#ruki
 from .models import Event, Location, User#ruki
 from rest_framework import authentication, exceptions#ruki
+from django.middleware.csrf import get_token
 
 
 class EventListAPIView(ListAPIView):#投稿10件取得
@@ -65,3 +66,7 @@ def post(self, request):#ruki
     else:
         raise exceptions.AuthenticationFailed('アカウントが見つかりませんでした')
     
+
+class GetCsrf(APIView):
+    def get(self, request):
+        return Response({'csrftoken':get_token(request)}, status=200)
