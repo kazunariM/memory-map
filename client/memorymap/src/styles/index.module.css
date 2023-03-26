@@ -1,0 +1,85 @@
+@charset "UTF-8";
+.main {
+  display: flex;
+  border: solid thin #ED19B2;
+  background-color: #FDF4FA;
+}
+
+.page_header {
+  width: 100%; /* 横幅90% */
+  padding: 10px 0;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+  background: #ED19B2;
+  display: flex;
+  flex-direction: column;
+}
+.page_header h1 {
+  color: #fff;
+}
+.page_header ul {
+  margin-left: 80%;
+}
+.page_header li {
+  list-style: none;
+  color: #6C2358;
+}
+
+.main_nav {
+  font-size: medium;
+  color: #6C2358;
+}
+
+.side {
+  border: #ED19B2;
+  align-items: center;
+  display: flex;
+  margin: 0 0.5em;
+}
+.side aside {
+  border: solid thin #ED19B2;
+}
+.side aside ul {
+  border: #ED19B2;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.side aside ul a {
+  color: black;
+  border-style: none;
+}
+.side aside ul:hover {
+  color: #6C2358;
+}
+.side aside ul li {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.contents {
+  display: flex;
+  flex-grow: 1;
+  color: #6C2358;
+  border-width: 1px;
+  border-color: #ED19B2;
+  font-size: 30px;
+}
+
+.map_area {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.map_area .leaflet-container {
+  flex-grow: 1;
+}
+
+.list_area {
+  width: 30%;
+  display: flex;
+  font-size: large;
+  list-style: none;
+}/*# sourceMappingURL=index.module.css.map */

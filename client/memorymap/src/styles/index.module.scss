@@ -1,17 +1,58 @@
 .main {
     display: flex;
+    border:solid thin #ED19B2;
+    background-color: #FDF4FA;
 }
 
+
+
+
+.page_header {
+    width: 100%; /* 横幅90% */
+    padding: 10px 0;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+    background: #ED19B2;
+    display: flex;
+            flex-direction: column;
+        h1{
+        color: #fff;
+        }
+        ul{
+            margin-left: 80%;
+            
+        }
+            li{
+                list-style: none;
+                color: #6C2358;
+            }
+}
+.main_nav{
+    font-size: medium;
+    color: #6C2358;
+}
 .side {
+    border: #ED19B2;
     align-items: center;
     display: flex;
     margin: 0 0.5em;
     
     aside {
-        
+        border: solid thin #ED19B2;
         ul {
+            border: #ED19B2;
             list-style-type: none;
-            padding-inline-start: 0px;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+                a {color: black;
+                border-style: none; 
+                }
+                &:hover {
+                    color: #6C2358;
+                }
 
             li {
                 text-align: center;
@@ -24,6 +65,10 @@
 .contents {
     display: flex;
     flex-grow: 1;
+    color: #6C2358;
+    border-width: 1px;
+    border-color: #ED19B2;
+    font-size: 30px;
 }
 
 .map_area {
@@ -38,4 +83,8 @@
 
 .list_area {
     width: 30%;
+    display: flex;
+    font-size: large;
+    list-style: none;
+
 }

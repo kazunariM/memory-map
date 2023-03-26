@@ -4,6 +4,11 @@
     display: flex;
     flex-direction: column;
     margin-right: 1em;
+    h2{
+        color:#6C2358 ;
+
+    }
+    
 }
 
 .post_area {
@@ -14,6 +19,7 @@
     flex-direction: column;
     width: 100%;
     margin-bottom: 1em;
+    border:solid #ED19B2;
 }
 
 .post_area_top {
@@ -31,6 +37,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: dashed 1px gray;
 
     div {
         flex-grow: 1;
