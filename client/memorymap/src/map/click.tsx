@@ -16,6 +16,7 @@ const redIcon = L.icon({
 type Props = {
     lat: number | null
     lon: number | null
+    changeLatLon: ( lat: number, lon: number ) => void
 }
 
 const Map = (props: Props) => {
@@ -25,7 +26,11 @@ const Map = (props: Props) => {
     const defaultPosition = new LatLng(35.68209024197379, 139.76712479998636)
 
     function MapComponent() {
-        const map = useMapEvents({})
+        const map = useMapEvents({
+            click(e) {
+                props.changeLatLon(e.latlng.lat, e.latlng.lng)
+            }
+        })
         useEffect(() => {
             setMap(map)
         }, [map])

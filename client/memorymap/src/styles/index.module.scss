@@ -39,3 +39,19 @@
 .list_area {
     width: 30%;
 }
+
+.event {
+    border: solid 1px black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        margin: 0;
+        margin: 0.5em;
+    }
+}
+
+.empty {
+    text-align: center;
+}

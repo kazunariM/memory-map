@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
+const Map = dynamic(() => import('@/map/click'), { ssr: false })
 
 import styles_index from '@/styles/index.module.scss'
 import styles from '@/styles/event_post.module.scss'
@@ -11,9 +13,28 @@ import ImageUpload from '@/img/upload'
 
 const Post: FC = () => {
     const [image, setImage] = useState<string | ArrayBuffer | null>(null)
+    const [exifLat, setexifLat] = useState<number | null>(null)
+    const [exifLon, setexifLon] = useState<number | null>(null)
+    const [exifDate, setexifDate] = useState<string | null>(null)
 
-    const uploadImg = (img: string | ArrayBuffer | null) => {
-        setImage(img)
+    const [Lat, setLat] = useState<number | null>(null)
+    const [Lon, setLon] = useState<number | null>(null)
+    
+    const changeLatLon = ( lat: number, lon: number ) => {
+        setLat(lat)
+        setLon(lon)
+    }
+
+    useEffect(() => {
+        setLat(exifLat)
+        setLon(exifLon)
+    }, [exifLat, exifLon])
+
+    const uploadImg = (date: string|null, src: string|ArrayBuffer|null, lat: number|null, lon: number|null) => {
+        setImage(src)
+        setexifDate(date)
+        setexifLat(lat)
+        setexifLon(lon)
     }
 
     return (
@@ -43,6 +64,9 @@ const Post: FC = () => {
                         <div className={styles.post_area_input}>
                             <input type="text" name="" placeholder='イベントタイトル'/>
                             <textarea name="" id="" placeholder='投稿本文'></textarea>
+                            <span>中心地を選んでください</span>
+                            <Map lat={Lat} lon={Lon} changeLatLon={changeLatLon}/>
+                            {(Lat && Lon) ? <span>{Lat},{Lon}</span> : <span>選択されていません</span>}
                         </div>
                     </div>
                 </div>
