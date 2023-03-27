@@ -19,7 +19,7 @@ from django.middleware.csrf import get_token
 
 
 class EventListAPIView(ListAPIView):#投稿10件取得
-    queryset = Event.objects.all().order_by('uuid')[:10]
+    queryset = Event.objects.all().order_by('-hold_date')[:10]
     serializer_class = EventSerializer
 
 # イベントにロケーション情報をPOSTする(URLに記載されたuuidはそのままEventフィールドに適応される)
